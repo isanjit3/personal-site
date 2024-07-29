@@ -6,6 +6,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --highlight-bg: 24, 24, 24; /* RGB for customGray (#181818) */
+  --highlight-color: 239, 68, 68; /* RGB for text-red-500 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,8 +28,20 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+/* Custom highlight styles */
+::selection {
+  background: rgba(var(--highlight-bg), 0.99);
+  color: rgb(var(--highlight-color));
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .unselectable {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard */
   }
 }
