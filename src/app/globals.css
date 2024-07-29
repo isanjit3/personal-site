@@ -22,21 +22,16 @@ html {
   }
 }
 
-body, .light-mode {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  transition: background-color 0.5s ease, color 0.5s ease;
+@layer utilities {
+  .scale-2x {
+    transform: scale(2); /* Double the size */
+  }
+  .scale-3x {
+    transform: scale(3); /* Triple the size */
+  }
 }
 
-.light-mode {
-  --foreground-rgb: 24, 24, 24; /* Same as customGray */
-  --background-start-rgb: 245, 245, 245; /* Off-white */
-  --background-end-rgb: 245, 245, 245;
+body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -63,15 +58,14 @@ body, .light-mode {
     user-select: none; /* Standard */
   }
   .chevron {
-    animation: smoothBounceFromTop 3s infinite;
+    animation: smoothBounce 3s infinite;
     transition: transform 0.3s ease, color 0.3s ease, font-size 0.3s ease;
     transform-origin: center; /* Ensure the transform origin is the center */
     padding: 10px; /* Increase the hover area */
-    color: rgb(var(--foreground-rgb));
   }
   .chevron:hover {
     animation: none;
-    transform: translateY(-20px) scale(1.1);
+    transform: translateY(0px) scale(1.1);
     color: #EF4444; /* Same red color as your name */
   }
   .chevron:not(:hover) {
@@ -82,7 +76,7 @@ body, .light-mode {
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(10px);
     }
   }
   @keyframes smoothBounceFromTop {

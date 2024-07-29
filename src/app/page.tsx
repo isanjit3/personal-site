@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { ReactTyped } from "react-typed";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile, faChevronDown } from "@fortawesome/free-solid-svg-icons";
@@ -42,18 +41,18 @@ export default function Home() {
   return (
     <div>
       <main className={`relative flex flex-col items-center justify-center h-screen p-8 ${isLightMode ? 'bg-white text-customGray' : 'bg-customGray text-white'}`}>
+        <div className="absolute top-16 right-16 scale-2x">
+          {/* @ts-ignore */}
+          <Expand 
+            toggled={isLightMode}
+            onToggle={handleToggle}
+            id="theme-toggle"
+            name="theme-toggle"
+            type="button"
+            aria-label="Toggle Theme"
+          />
+        </div>
         <div className="text-center">
-          <div className="absolute top-16 right-16">
-              {/* @ts-ignore */}
-              <Expand 
-                toggled={isLightMode}
-                onToggle={handleToggle}
-                id="theme-toggle"
-                name="theme-toggle"
-                type="button"
-                aria-label="Toggle Theme"
-              />
-            </div>
           <h1 className="text-6xl font-bold mb-6">
             Hi, my name is <span className="text-red-500">Sanjit</span> <span role="img" aria-label="wave">👋</span>
           </h1>
@@ -110,9 +109,9 @@ export default function Home() {
           </div>
           {showChevron && (
             <div
-              className={`absolute bottom-16 left-1/2 transform -translate-x-1/2 chevron cursor-pointer opacity-0 transition-opacity duration-1000 ease-in-out ${isLightMode ? 'text-customGray' : 'text-white'}`}
+              className={`absolute bottom-16 left-1/2 -translate-x-1/2 transform chevron cursor-pointer opacity-0 transition-opacity duration-3000 ease-in-out ${isLightMode ? 'text-customGray' : 'text-white'}`}
               onClick={handleScroll}
-              style={{ opacity: showChevron ? 1 : 0 }}
+              style={{ opacity: showChevron ? 1 : 0, marginLeft: '-1.75rem' }}
             >
               <FontAwesomeIcon icon={faChevronDown} size="3x" />
             </div>
@@ -120,7 +119,7 @@ export default function Home() {
         </div>
       </main>
       <div id="next-section" className="w-full h-screen bg-gray-800 flex items-center justify-center">
-        <p className="text-3xl text-white">Next Section Content</p>
+        <p className="text-3xl text-white">More Content Coming Soon</p>
       </div>
     </div>
   );
