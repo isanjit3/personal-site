@@ -43,6 +43,17 @@ export default function Home() {
     <div>
       <main className={`relative flex flex-col items-center justify-center h-screen p-8 ${isLightMode ? 'bg-white text-customGray' : 'bg-customGray text-white'}`}>
         <div className="text-center">
+          <div className="absolute top-16 right-16">
+              {/* @ts-ignore */}
+              <Expand 
+                toggled={isLightMode}
+                onToggle={handleToggle}
+                id="theme-toggle"
+                name="theme-toggle"
+                type="button"
+                aria-label="Toggle Theme"
+              />
+            </div>
           <h1 className="text-6xl font-bold mb-6">
             Hi, my name is <span className="text-red-500">Sanjit</span> <span role="img" aria-label="wave">👋</span>
           </h1>
@@ -106,16 +117,6 @@ export default function Home() {
               <FontAwesomeIcon icon={faChevronDown} size="3x" />
             </div>
           )}
-          <div className="absolute top-16 right-16">
-            <Expand
-              toggled={isLightMode}
-              onToggle={handleToggle}
-              id="theme-toggle"
-              name="theme-toggle"
-              type="button"
-              aria-label="Toggle Theme"
-            />
-          </div>
         </div>
       </main>
       <div id="next-section" className="w-full h-screen bg-gray-800 flex items-center justify-center">
