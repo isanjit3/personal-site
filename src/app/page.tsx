@@ -39,8 +39,8 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <main className={`relative flex flex-col items-center justify-center h-screen p-8 ${isLightMode ? 'bg-white text-customGray' : 'bg-customGray text-white'}`}>
+    <div className="transition-all duration-500 ease-in-out">
+      <main className={`relative flex flex-col items-center justify-center h-screen p-8 ${isLightMode ? 'bg-white text-customGray' : 'bg-customGray text-white'} transition-all duration-500 ease-in-out`}>
         <div className="absolute top-16 right-16 scale-2x">
           {/* @ts-ignore */}
           <Expand 
