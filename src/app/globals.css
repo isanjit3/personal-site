@@ -6,20 +6,34 @@ html {
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --highlight-bg: 24, 24, 24; /* RGB for customGray (#181818) */
-  --highlight-color: 239, 68, 68; /* RGB for text-red-500 */
+body {
+  @apply transition-all duration-500 ease-in-out;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+::selection {
+  background-color: transparent;
+  color: #EF4444; /* Same red color as your name */
+}
+
+.light-mode {
+  @apply bg-lightBackground text-customGray;
+}
+
+.dark-mode {
+  @apply bg-darkBackground text-white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 @layer utilities {
@@ -29,40 +43,6 @@ html {
   .scale-3x {
     transform: scale(3); /* Triple the size */
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.light-mode {
-  --foreground-rgb: 24, 24, 24; /* Same as customGray */
-  --background-start-rgb: 245, 245, 245; /* Off-white */
-  --background-end-rgb: 245, 245, 245;
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Custom highlight styles */
-::selection {
-  background: rgba(var(--highlight-bg), 0.99);
-  color: rgb(var(--highlight-color));
-}
-
-@layer utilities {
   .text-balance {
     text-wrap: balance;
   }
@@ -71,35 +51,5 @@ body {
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Standard */
-  }
-  .chevron {
-    animation: smoothBounce 3s infinite;
-    transition: transform 0.3s ease, color 0.3s ease, font-size 0.3s ease;
-    transform-origin: center; /* Ensure the transform origin is the center */
-    padding: 10px; /* Increase the hover area */
-  }
-  .chevron:hover {
-    animation: none;
-    transform: translateY(0px) scale(1.1);
-    color: #EF4444; /* Same red color as your name */
-  }
-  .chevron:not(:hover) {
-    transition: transform 0.6s ease, color 0.6s ease, font-size 0.6s ease;
-  }
-  @keyframes smoothBounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(10px);
-    }
-  }
-  @keyframes smoothBounceFromTop {
-    0%, 100% {
-      transform: translateY(-20px);
-    }
-    50% {
-      transform: translateY(-30px);
-    }
   }
 }

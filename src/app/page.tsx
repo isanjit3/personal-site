@@ -4,43 +4,22 @@ import { ReactTyped } from "react-typed";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub, faSpotify } from "@fortawesome/free-brands-svg-icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Expand } from '@theme-toggles/react';
 import '@theme-toggles/react/css/Expand.css';
 
 export default function Home() {
-  const [showChevron, setShowChevron] = useState(false);
   const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowChevron(true);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleScroll = () => {
-    const nextSection = document.getElementById("next-section");
-    if (nextSection) {
-      window.scrollTo({
-        top: nextSection.offsetTop,
-        left: 0,
-      });
-    }
-  };
 
   const handleToggle = () => {
     setIsLightMode(!isLightMode);
-    if (!isLightMode) {
-      document.body.classList.add('light-mode');
-    } else {
-      document.body.classList.remove('light-mode');
-    }
+    document.body.classList.toggle('light-mode', !isLightMode);
+    document.body.classList.toggle('dark-mode', isLightMode);
   };
 
   return (
-    <div className="transition-all duration-500 ease-in-out">
-      <main className={`relative flex flex-col items-center justify-center h-screen p-8 ${isLightMode ? 'bg-white text-customGray' : 'bg-customGray text-white'} transition-all duration-500 ease-in-out`}>
+    <div className="fade-in">
+      <main className="relative flex flex-col items-center justify-center h-screen p-8">
         <div className="absolute top-16 right-16 scale-2x">
           {/* @ts-ignore */}
           <Expand 
@@ -54,14 +33,13 @@ export default function Home() {
         </div>
         <div className="text-center">
           <h1 className="text-6xl font-bold mb-6">
-            Hi, my name is <span className="text-red-500">Sanjit</span> <span role="img" aria-label="wave">👋</span>
+            Hi, my name is <span className="text-customRed">Sanjit</span> <span role="img" aria-label="wave">👋</span>
           </h1>
           <p className="text-3xl mb-10">
             I am a{""}
             <ReactTyped
               strings={[
                 "&nbsp;software engineer",
-                "n entrepreneur",
                 "&nbsp;change maker",
                 "n innovator"
               ]}
@@ -107,20 +85,8 @@ export default function Home() {
               <span>Spotify</span>
             </a>
           </div>
-          {showChevron && (
-            <div
-              className={`absolute bottom-16 left-1/2 -translate-x-1/2 transform chevron cursor-pointer opacity-0 transition-opacity duration-3000 ease-in-out ${isLightMode ? 'text-customGray' : 'text-white'}`}
-              onClick={handleScroll}
-              style={{ opacity: showChevron ? 1 : 0, marginLeft: '-1.75rem' }}
-            >
-              <FontAwesomeIcon icon={faChevronDown} size="3x" />
-            </div>
-          )}
         </div>
       </main>
-      <div id="next-section" className="w-full h-screen bg-gray-800 flex items-center justify-center">
-        <p className="text-3xl text-white">More Content Coming Soon</p>
-      </div>
     </div>
   );
 }

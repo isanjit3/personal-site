@@ -9,12 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        lightBackground: '#F5F5F5', // Off-white color for light mode
+        darkBackground: '#181818', // CustomGray for dark mode
         customGray: '#181818',
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        customRed: '#EF4444', // Same red color as your name
       },
     },
   },
