@@ -23,6 +23,12 @@ body {
   @apply bg-darkBackground text-white;
 }
 
+/* Custom highlight styles */
+::selection {
+  background-color: transparent;
+  color: #EF4444; /* Same red color as your name */
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -33,7 +39,7 @@ body {
 }
 
 .fade-in {
-  animation: fadeIn 0.5s ease-in-out forwards;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 @layer utilities {

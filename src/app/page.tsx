@@ -6,6 +6,9 @@ import { faFile, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub, faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { Expand } from '@theme-toggles/react';
+import Badge from './components/Badge/Badge';
+import Flowise from './components/Flowise/Flowise';
+import Script from 'next/script';
 import '@theme-toggles/react/css/Expand.css';
 
 export default function Home() {
@@ -18,8 +21,8 @@ export default function Home() {
   };
 
   return (
-    <div className="fade-in">
-      <main className="relative flex flex-col items-center justify-center h-screen p-8">
+    <div className="fade-in transition-all duration-500 ease-in-out">
+      <main className={`relative flex flex-col items-center justify-center h-screen p-8 transition-all duration-500 ease-in-out ${isLightMode ? 'bg-lightBackground text-customGray' : 'bg-darkBackground text-white'}`}>
         <div className="absolute top-16 right-16 scale-2x">
           {/* @ts-ignore */}
           <Expand 
@@ -87,6 +90,12 @@ export default function Home() {
           </div>
         </div>
       </main>
+      {/* <section className={`h-screen flex items-center justify-center transition-all duration-500 ease-in-out ${isLightMode ? 'bg-lightBackground text-customGray' : 'bg-darkBackground text-white'}`}>
+        <Badge />
+      </section> */}
+      <div className="fixed bottom-5 right-5">
+        <Flowise />
+      </div> 
     </div>
   );
 }
