@@ -81,7 +81,7 @@ export default function Home() {
               target="_blank"
               className="w-full sm:w-auto bg-green-500 text-white font-bold py-3 px-6 rounded transition duration-300 ease-in-out hover:bg-white hover:text-green-500 flex items-center justify-center space-x-2 text-base sm:text-lg"
             >
-              <FontAwesomeIcon icon={faSpotify} />
+              <FontAwesomeIcon icon={faSpotify} /> 
               <span>Spotify</span>
             </a>
           </div>
