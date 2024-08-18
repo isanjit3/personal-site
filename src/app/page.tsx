@@ -56,7 +56,7 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 w-full unselectable">
             <a
-              href="/assets/Thangarasu_Sanjit_Resume.pdf"
+              href="https://eblws9kpxcehafgs.public.blob.vercel-storage.com/files/Thangarasu_Sanjit_Resume.pdf"
               target="_blank"
               className="w-full sm:w-auto bg-red-500 text-white font-bold py-3 px-6 rounded transition duration-300 ease-in-out hover:bg-white hover:text-red-500 flex items-center justify-center space-x-2 text-base sm:text-lg"
             >
