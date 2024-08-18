@@ -6,7 +6,6 @@ import { faFile, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub, faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { Expand } from '@theme-toggles/react';
-import Script from 'next/script';
 import '@theme-toggles/react/css/Expand.css';
 
 export default function Home() {
