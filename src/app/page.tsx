@@ -6,8 +6,6 @@ import { faFile, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub, faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { Expand } from '@theme-toggles/react';
-import Badge from './components/Badge/Badge';
-import Flowise from './components/Flowise/Flowise';
 import Script from 'next/script';
 import '@theme-toggles/react/css/Expand.css';
 
@@ -90,12 +88,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-      {/* <section className={`h-screen flex items-center justify-center transition-all duration-500 ease-in-out ${isLightMode ? 'bg-lightBackground text-customGray' : 'bg-darkBackground text-white'}`}>
-        <Badge />
-      </section> */}
-      <div className="fixed bottom-5 right-5">
-        <Flowise />
-      </div> 
     </div>
   );
 }
