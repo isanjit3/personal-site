@@ -1,6 +1,5 @@
 import { Hero } from "@/components/sections/hero";
 import { NavigationBar } from "@/components/sections/navbar";
-import GradientReveal from "@/components/sections/gradient";
 
 export default function Home() {
   return (
