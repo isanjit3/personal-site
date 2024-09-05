@@ -21,9 +21,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           enableSystem
           disableTransitionOnChange
         >
-          <GradientReveal>
+          {/* <GradientReveal> */}
               {children}
-          </GradientReveal>
+          {/* </GradientReveal> */}
         </ThemeProvider>
       </body>
     </html>
