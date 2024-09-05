@@ -145,7 +145,7 @@
     mask-image: radial-gradient(circle at var(--mouse-x) var(--mouse-y), black 60px, transparent 75px);
     transition: opacity 0.2s ease, transform 0.2s ease;
     transform-origin: center;
-    /* pointer-events: none;
+    pointer-events: none;
     animation: moveGradient 20s infinite linear; /* Increased duration for smoother transition */
   }
   .gradient-background { /* FOR MOVING GRADIENT BACKGROUNDS */

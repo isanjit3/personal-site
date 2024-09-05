@@ -1,6 +1,6 @@
 import { Hero } from "@/components/sections/hero";
 import { NavigationBar } from "@/components/sections/navbar";
-import Badge from "@/components/sections/badge"; // Assuming Badge is in your components folder
+import Badge from "@/components/sections/badge";
 
 export default function Home() {
   return (
@@ -9,10 +9,9 @@ export default function Home() {
       <div className="flex flex-1 items-start justify-center mt-40">
         <Hero />
       </div>
-      {/* Overlay the Badge */}
-      <div className="absolute top-0 left-[-15rem] p-4" style={{ width: '120vw', height: '100vh' }}>
+      {/* <div className="absolute top-0 left-[-15rem] p-4" style={{ width: '120vw', height: '100vh' }}>
         <Badge />
-      </div>
+      </div> */}
     </main>
   );
 }
