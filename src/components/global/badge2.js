@@ -12,11 +12,10 @@ extend({ MeshLineGeometry, MeshLineMaterial })
 useGLTF.preload('https://eblws9kpxcehafgs.public.blob.vercel-storage.com/assets/badge-assets/badge.glb')
 useTexture.preload('https://eblws9kpxcehafgs.public.blob.vercel-storage.com/assets/badge-assets/band.png')
 
-export default function App() {
+export default function Badge2() {
   return (
     <Canvas
       camera={{ position: [0, 0, 13], fov: 25 }}
-      gl={{ alpha: true }} // Enable transparency
     >
       <ambientLight intensity={Math.PI} />
       <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>

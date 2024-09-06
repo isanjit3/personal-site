@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
-import GradientReveal from "@/components/sections/gradient";
+import GradientReveal from "@/components/global/gradient";
 
 const inter = Inter({ subsets: ["latin"] });
 

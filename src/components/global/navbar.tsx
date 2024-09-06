@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { ModeToggle } from "@/components/sections/theme-toggle"
-import { ProfilePicture } from "@/components/sections/profile-picture"
+import { ModeToggle } from "@/components/global/theme-toggle"
+import { ProfilePicture } from "@/components/global/profile-picture"
 
 export function NavigationBar() {
   return (
-    <div className="w-full">
-      <div className="mx-auto max-w-screen-xl flex justify-between items-center py-4">
+    <nav className="w-full">
+      <div className="flex flex-row justify-between">
         <div className="flex justify-start">
           {/* You can add a logo or brand name here if needed */}
         </div>
@@ -16,7 +16,7 @@ export function NavigationBar() {
           <ProfilePicture />
         </div>
       </div>
-    </div>
+    </nav>
   )
 }
 

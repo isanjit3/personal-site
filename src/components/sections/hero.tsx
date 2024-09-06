@@ -8,7 +8,9 @@ import { Button } from "@/components/ui/button";
 
 export function Hero() {
     return (
-        <div className="flex flex-col items-center text-center gap-y-10">
+        <div 
+        className="flex flex-col items-center gap-y-10"
+        >
             <h1 className="font-bold tracking-wide text-6xl">
                 Hi, my name is<span className="gradient-text"> Sanjit </span>👋
             </h1>

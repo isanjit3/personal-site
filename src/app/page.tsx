@@ -1,17 +1,16 @@
 import { Hero } from "@/components/sections/hero";
-import { NavigationBar } from "@/components/sections/navbar";
-import Badge from "@/components/sections/badge";
+import { NavigationBar } from "@/components/global/navbar";
+import Badge from "@/components/global/badge";
+import ScrollChevron from "@/components/global/chevron";
+import { About } from "@/components/sections/about";
 
 export default function Home() {
   return (
-    <main className="flex flex-col w-full min-h-screen p-12 relative overflow-hidden">
+    <main className="flex flex-col h-screen p-12">
       <NavigationBar />
-      <div className="flex flex-1 items-start justify-center mt-40">
+      <div className="flex flex-col flex-1 justify-center">
         <Hero />
       </div>
-      {/* <div className="absolute top-0 left-[-15rem] p-4" style={{ width: '120vw', height: '100vh' }}>
-        <Badge />
-      </div> */}
     </main>
   );
 }
