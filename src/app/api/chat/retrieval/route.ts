@@ -7,7 +7,8 @@ import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
 import { Document } from "@langchain/core/documents";
-import { RunnableSequence } from "@langchain/core/runnables";
+import { RunnableSequence, Runnable } from "@langchain/core/runnables";
+
 import {
   BytesOutputParser,
   StringOutputParser,
@@ -82,7 +83,7 @@ export async function POST(req: NextRequest) {
     const model = new ChatOpenAI({
       model: "gpt-3.5-turbo-0125",
       temperature: 0.2,
-    });
+    }) as Runnable<any, any>; 
 
     const client = createClient(
       process.env.SUPABASE_URL!,
