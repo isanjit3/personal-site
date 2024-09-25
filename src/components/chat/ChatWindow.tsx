@@ -62,7 +62,7 @@ export function ChatWindow(props: {
     <div>
       {/* Chat window - conditionally rendered based on state */}
       {isChatWindowOpen && (
-        <div className="fixed bottom-20 right-5 bg-black-700 shadow-lg p-4 rounded max-w-sm w-full border-gray-600 border-2">
+        <div className="fixed bottom-20 right-5 bg-background shadow-lg p-4 rounded max-w-sm w-full border-gray-600 border-2">
           <h2 className={`${messages.length > 0 ? "" : "hidden"} text-2xl text-white`}>{emoji} {titleText}</h2>
           {messages.length === 0 ? emptyStateComponent : ""}
           <div
