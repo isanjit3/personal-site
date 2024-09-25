@@ -22,7 +22,7 @@ export function ChatWindow(props: {
 
   // Destructure props
   const { endpoint, emptyStateComponent, placeholder, titleText = "An LLM", emoji } = props;
-  const showIngestForm = props.showIngestForm ?? process.env.NEXT_PUBLIC_DEMO === "true";
+  const showIngestForm = props.showIngestForm ?? process.env.NEXT_PUBLIC_DEMO === "false";
 
   const ingestForm = showIngestForm && <UploadDocumentsForm />;
 
