@@ -80,7 +80,7 @@ export function ChatWindow(props: {
                         <ChatMessageBubble
                           key={m.id}
                           message={m}
-                          aiEmoji={emoji}
+                          aiAvatar={emoji}
                           sources={sourcesForMessages[sourceKey]}
                         />
                       );
