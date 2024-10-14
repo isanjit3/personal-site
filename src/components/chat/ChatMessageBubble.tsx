@@ -1,23 +1,40 @@
-import type { Message } from "ai/react";
+import type { Message } from "ai/react"
+import { cn } from "@/lib/utils"
+import { Avatar, AvatarImage } from "@/components/ui/avatar"
+import { ProfilePicture } from "@/components/global/profile-picture"
+import { AIAvatar } from "@/components/global/ai-avatar"
 
-export function ChatMessageBubble(props: { message: Message, aiEmoji?: string, sources: any[] }) {
-  const colorClassName =
-    props.message.role === "user" ? "bg-sky-600" : "bg-slate-50 text-black";
-  const alignmentClassName =
-    props.message.role === "user" ? "ml-auto" : "mr-auto";
-  const prefix = props.message.role === "user" ? "🧑" : props.aiEmoji;
+interface ChatMessageBubbleProps {
+  message: Message
+  aiAvatar?: string
+  sources: any[]
+}
+
+export function ChatMessageBubble({ message, aiAvatar, sources }: ChatMessageBubbleProps) {
+  const isUser = message.role === "user"
 
   return (
     <div
-      className={`${alignmentClassName} ${colorClassName} rounded px-4 py-2 max-w-[80%] mb-8 flex`}
-      style={{ wordWrap: "break-word", overflowWrap: "anywhere" }}
+      className={cn(
+        "flex items-end space-x-2 space-y-4",
+        isUser ? "flex-row-reverse space-x-reverse" : "flex-row"
+      )}
     >
-      <div className="mr-2">
-        {prefix}
-      </div>
-      <div className="whitespace-pre-wrap flex flex-col break-words">
-        <span>{props.message.content}</span>
+      {isUser ? (
+        <div className={cn("flex-shrink-0 mb-[-8px]")}>
+          <ProfilePicture />
+        </div>
+      ) : (
+        <AIAvatar className={cn("flex-shrink-0 mt-[-8px]")} />
+      )}
+      <div
+        className={cn(
+          "rounded-lg px-4 py-2 max-w-[80%]",
+          isUser ? "bg-primary text-primary-foreground" : "bg-background"
+        )}
+      >
+        <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
       </div>
     </div>
-  );
+  )
 }

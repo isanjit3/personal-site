@@ -14,6 +14,7 @@ export default function Home() {
       <p className="text-xs text-gray-500 italic">* Still a work in progress, some answers may be incorrect</p>
     </div>
   );
+
   return (
     <main className="flex flex-col h-screen p-12">
       <NavigationBar />
@@ -28,7 +29,7 @@ export default function Home() {
                 }
                 emoji="🤖"
                 titleText="Sanjit AI"
-                ></ChatWindow>
+        ></ChatWindow>
     </main>
   );
 }
