@@ -16,20 +16,22 @@ export default function Home() {
   );
 
   return (
-    <main className="flex flex-col h-screen p-12">
-      <NavigationBar />
-      <div className="flex flex-col flex-1 justify-center">
-        <Hero />
-      </div>
-      <ChatWindow
-                endpoint="api/chat/retrieval"
-                emptyStateComponent={InfoCard}
-                placeholder={
-                    'Where do you work?'
-                }
-                emoji="🤖"
-                titleText="Sanjit AI"
-        ></ChatWindow>
-    </main>
+    <>
+      <main className="flex flex-col h-screen p-12">
+        <NavigationBar />
+        <div className="flex flex-col flex-1 justify-center">
+          <Hero />
+        </div>
+        <ChatWindow
+                  endpoint="api/chat/retrieval"
+                  emptyStateComponent={InfoCard}
+                  placeholder={
+                      'Where do you work?'
+                  }
+                  emoji="🤖"
+                  titleText="Sanjit AI"
+          ></ChatWindow>
+      </main>
+    </>
   );
 }

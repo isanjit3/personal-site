@@ -204,6 +204,11 @@
   .shrink-hover:hover ~ #gradient-layer {
     transform: scale(0);
   }
+
+  .badge-style {
+    width: 90%;
+    height: 100%;
+  }
 }
 
 @layer base {
