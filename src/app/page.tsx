@@ -28,7 +28,7 @@ export default function Home() {
             >
               <BoxReveal boxColor="#5046e6" duration={0.5}>
                 <p className="text-[4.5rem] font-semibold">
-                  Hi, I'm Sanjit<span className="text-[#5046e6]">.</span>
+                  Hi, I&apos;m Sanjit<span className="text-[#5046e6]">.</span>
                 </p>
               </BoxReveal>
               <BoxReveal boxColor="#5046e6" duration={0.5}>
