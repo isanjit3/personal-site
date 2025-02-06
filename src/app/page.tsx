@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { SplineScene } from "@/components/robot/splite";
 import { BoxReveal } from "@/components/ui/box-reveal";
 import { Typewriter } from "@/components/ui/typewriter";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   const [showBox, setShowBox] = useState(false);
@@ -17,7 +19,7 @@ export default function Home() {
     <>
       <div className="flex min-h-screen overflow-hidden">
         {/* Left content */}
-        <div className="flex-1 relative z-10 flex flex-col justify-center items-center">
+        <div className="flex-1 relative z-10 flex flex-col">
           <div className="flex-1 flex justify-center items-center">
             {/* The container for BoxReveal */}
             <div
@@ -49,6 +51,35 @@ export default function Home() {
                     />
                   </span>
                 </div>
+              </BoxReveal>
+            </div>
+          </div>
+          <div className="flex-1 flex pl-[9.15rem]">
+            {/* New vertically stacked links with box reveal */}
+            <div className="space-y-8 text-[1.5rem]">
+              <BoxReveal boxColor="#5046e6" duration={0.5}>
+                <Link href="/about" className="block">
+                  <span className="relative z-10">
+                    Hover Me
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-[#5046e6] transform origin-left transition-transform duration-300 ease-in-out group-hover:scale-x-0"></span>
+                  </span>
+                </Link>
+              </BoxReveal>
+              <BoxReveal boxColor="#5046e6" duration={0.5}>
+                <Link href="/projects" className="block">
+                  <span className="relative z-10">
+                    Hover Me
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-[#5046e6] transform origin-left transition-transform duration-300 ease-in-out group-hover:scale-x-0"></span>
+                  </span>
+                </Link>
+              </BoxReveal>
+              <BoxReveal boxColor="#5046e6" duration={0.5}>
+                <Link href="/contact" className="block">
+                  <span className="relative z-10">
+                    Hover Me
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-[#5046e6] transform origin-left transition-transform duration-300 ease-in-out group-hover:scale-x-0"></span>
+                  </span>
+                </Link>
               </BoxReveal>
             </div>
           </div>
