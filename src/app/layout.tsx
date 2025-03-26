@@ -1,23 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { satoshi, geistSans, geistMono, sentient, switzer } from "@/utils/fonts";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Sanjit Thangarasu",
-  description: "Hire Me!",
+  description: "Sanjit Thangarasu's portfolio",
 };
 
 export default function RootLayout({
@@ -28,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${satoshi.variable} ${geistSans.variable} ${geistMono.variable} ${sentient.variable} ${switzer.variable} antialiased`}
       >
         <ThemeProvider
             attribute="class"
