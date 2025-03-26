@@ -10,7 +10,7 @@ export default function Home() {
 					<div className="flex-1 relative flex flex-col p-32">
 						{/* Header */}
 						<div className="flex flex-col">
-							<p className="text-lg">Hi, I'm</p>
+							<p className="text-lg">Hi, I&apos;m</p>
 							<p className="text-xl">Sanjit Thangarasu.</p>
 						</div>
 						{/* Typewriter */}
