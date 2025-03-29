@@ -25,7 +25,7 @@ export default async function VideoBackground() {
       className="absolute top-0 left-0 w-full h-full object-cover"
       aria-hidden="true"
     >
-      <source src={videoBlob.url} type="video/mp4" />
+      <source src={videoBlob.url} type="video/quicktime" />
       Your browser does not support the video tag.
     </video>
   )

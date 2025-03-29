@@ -1,13 +1,15 @@
 import { Typewriter } from "@/components/ui/typewriter";
 import { BoxReveal } from "@/components/ui/box-reveal";
-
+import Image from "next/image";
+import { ModeToggle } from "@/components/ui/theme-toggle";
+import VideoBackground from "@/components/ui/video-background";
 export default function Home() {
 	return (
 		<>
 			<div className="">
 				<div className="flex min-h-screen">
 					{/* Left content */}
-					<div className="flex-1 relative flex flex-col p-32">
+					<div className="flex-1 relative flex flex-col py-32 pl-32">
 						{/* Header */}
 						<div className="flex flex-col">
 							<p className="text-lg">Hi, I&apos;m</p>
@@ -61,7 +63,11 @@ export default function Home() {
 					</div>
 
 					{/* Right content */}
-					<div className="flex-1 relative flex flex-col"></div>
+					<div className="flex-1 relative flex flex-col">
+						<div className="relative w-full h-full -ml-20">
+							<VideoBackground />
+						</div>
+					</div>
 				</div>
 			</div>
 		</>
