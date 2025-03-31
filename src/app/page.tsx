@@ -74,6 +74,7 @@ export default function Home() {
 								autoPlay={true}
 								muted={true}
 								loop={true}
+								preload="auto"
 								/>
 							</Suspense>
 						</div>

@@ -15,6 +15,7 @@ interface VideoPlayerProps {
 	muted?: boolean;
 	loop?: boolean;
 	poster?: string;
+	preload?: "auto" | "metadata" | "none";
 	onError?: (error: Error) => void;
 }
 
@@ -26,6 +27,7 @@ export default function VideoPlayer({
 	autoPlay = false,
 	muted = false,
 	loop = false,
+	preload = "auto",
 	poster,
 	onError,
 }: VideoPlayerProps) {
@@ -91,6 +93,7 @@ export default function VideoPlayer({
 				loop={loop}
 				playsInline
 				poster={poster}
+				preload={preload}
 				onLoadedData={handleLoadedData}
 				onError={handleError}
 			>
