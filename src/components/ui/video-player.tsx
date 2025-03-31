@@ -1,109 +1,105 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import type React from "react";
 
-interface R2VideoPlayerProps {
-	videoKey: string;
-	videoKeySafari?: string;
+import { useState, useRef } from "react";
+import { Loader2, AlertCircle } from "lucide-react";
+import { useBrowserDetection } from "@/hooks/use-browser-detection";
+
+interface VideoPlayerProps {
+	videoName: string;
+	chromeVideoName?: string;
+	className?: string;
+	controls?: boolean;
+	autoPlay?: boolean;
+	muted?: boolean;
+	loop?: boolean;
+	poster?: string;
+	onError?: (error: Error) => void;
 }
 
-export default function R2VideoPlayer({
-	videoKey,
-	videoKeySafari,
-}: R2VideoPlayerProps) {
-	const [videoUrl, setVideoUrl] = useState<string | null>(null);
-	const [loading, setLoading] = useState(true);
+export default function VideoPlayer({
+	videoName,
+	chromeVideoName,
+	className = "",
+	controls = true,
+	autoPlay = false,
+	muted = false,
+	loop = false,
+	poster,
+	onError,
+}: VideoPlayerProps) {
+	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
-	const [isSafari, setIsSafari] = useState(false);
+	const videoRef = useRef<HTMLVideoElement>(null);
+	const { isSafari } = useBrowserDetection();
 
-	useEffect(() => {
-		// Detect Safari browser
-		const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-		setIsSafari(isSafariBrowser);
-	}, []);
+	// Determine which video to use based on browser
+	const activeVideoName = isSafari && chromeVideoName ? chromeVideoName : videoName;
 
-	useEffect(() => {
-		async function getVideoUrl() {
-			try {
-				// Create an S3 client that points to Cloudflare R2
-				const s3Client = new S3Client({
-					region: "auto", // R2 uses 'auto' as the region
-					endpoint: `https://${process.env.NEXT_PUBLIC_CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-					credentials: {
-						accessKeyId: process.env.NEXT_PUBLIC_R2_ACCESS_KEY_ID || "",
-						secretAccessKey: process.env.NEXT_PUBLIC_R2_SECRET_ACCESS_KEY || "",
-					},
-				});
+	// Get file extension to determine video type
+	const fileExtension = activeVideoName.split(".").pop()?.toLowerCase() || "";
 
-				// Use Safari video key if available and browser is Safari
-				const keyToUse = isSafari && videoKeySafari ? videoKeySafari : videoKey;
+	// Map file extensions to MIME types
+	const mimeTypes: Record<string, string> = {
+		mp4: "video/mp4",
+		mov: "video/quicktime",
+		webm: "video/webm",
+		avi: "video/x-msvideo",
+		mkv: "video/x-matroska",
+		m4v: "video/x-m4v",
+		ogg: "video/ogg",
+	};
 
-				// Create a command to get the object
-				const command = new GetObjectCommand({
-					Bucket: process.env.NEXT_PUBLIC_CLOUDFLARE_BUCKET || "",
-					Key: keyToUse,
-				});
+	const videoType = mimeTypes[fileExtension] || "video/mp4";
 
-				// Generate a pre-signed URL (valid for 1 hour)
-				const signedUrl = await getSignedUrl(s3Client, command, {
-					expiresIn: 3600,
-				});
+	const handleLoadedData = () => {
+		setIsLoading(false);
+	};
 
-				setVideoUrl(signedUrl);
-			} catch (err) {
-				console.error("Error fetching video:", err);
-				setError("Failed to load video. Please try again later.");
-			} finally {
-				setLoading(false);
-			}
-		}
-
-		getVideoUrl();
-	}, [videoKey, videoKeySafari, isSafari]);
-
-	if (loading) {
-		return <></>;
-	}
-
-	if (error) {
-		return (
-			<div className="">
-				<div className="">{error}</div>
-			</div>
-		);
-	}
-
-	// Determine video type based on file extension
-	const getVideoType = (key: string) => {
-		const extension = key.split('.').pop()?.toLowerCase();
-		switch (extension) {
-			case 'mov':
-				return 'video/quicktime';
-			case 'mp4':
-				return 'video/mp4';
-			case 'webm':
-				return 'video/webm';
-			default:
-				return 'video/mp4';
+	const handleError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
+		setIsLoading(false);
+		const errorMessage = `Failed to load video: ${activeVideoName}`;
+		setError(errorMessage);
+		if (onError) {
+			console.error(`Error on ${e}`);
+			onError(new Error(errorMessage));
 		}
 	};
 
-	const videoType = getVideoType(isSafari && videoKeySafari ? videoKeySafari : videoKey);
-
 	return (
-		<video
-			autoPlay
-			loop
-			muted
-			playsInline
-			className="absolute top-0 left-0 w-full h-full object-cover"
-			preload="metadata"
-			aria-hidden="true"
-		>
-			<source src={videoUrl || undefined} type={videoType} />
-			Your browser does not support the video tag.
-		</video>
+		<div className={`relative ${className}`}>
+			{isLoading && (
+				<div className="absolute inset-0 flex items-center justify-center bg-transparent z-10">
+					<Loader2 className="h-8 w-8 animate-spin text-primary" />
+				</div>
+			)}
+
+			{error && (
+				<div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 bg-opacity-50 z-10 p-4">
+					<AlertCircle className="h-8 w-8 text-red-500 mb-2" />
+					<p className="text-red-500 text-center">{error}</p>
+				</div>
+			)}
+
+			<video
+				ref={videoRef}
+				className="w-full h-full"
+				controls={controls}
+				autoPlay={autoPlay}
+				muted={muted}
+				loop={loop}
+				playsInline
+				poster={poster}
+				onLoadedData={handleLoadedData}
+				onError={handleError}
+			>
+				<source
+					src={`/api/video?fileName=${encodeURIComponent(activeVideoName)}`}
+					type={videoType}
+				/>
+				Your browser does not support the video tag.
+			</video>
+		</div>
 	);
 }
