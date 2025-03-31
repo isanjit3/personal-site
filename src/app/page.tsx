@@ -1,6 +1,7 @@
 import { Typewriter } from "@/components/ui/typewriter";
 import { BoxReveal } from "@/components/ui/box-reveal";
 import VideoPlayer from "@/components/ui/video-player";
+import { Suspense } from "react";
 
 export default function Home() {
 	return (
@@ -64,15 +65,17 @@ export default function Home() {
 					{/* Right content */}
 					<div className="flex-1 relative flex flex-col">
 						<div className="relative w-full h-full -ml-20">
-							<VideoPlayer 
-							videoName="caesar-safari.mp4" 
-							chromeVideoName="caesar-chrome.webm" 
-							className="absolute top-0 left-0 w-full h-full object-cover"
-							controls={false}
-							autoPlay={true}
-							muted={true}
-							loop={true}
-							/>
+							<Suspense>
+								<VideoPlayer 
+								videoName="caesar-safari.mp4" 
+								chromeVideoName="caesar-chrome.webm" 
+								className="absolute top-0 left-0 w-full h-full object-cover"
+								controls={false}
+								autoPlay={true}
+								muted={true}
+								loop={true}
+								/>
+							</Suspense>
 						</div>
 					</div>
 				</div>
