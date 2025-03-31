@@ -69,7 +69,7 @@ export default function Home() {
 								<VideoPlayer 
 								videoName="caesar-safari.mp4" 
 								chromeVideoName="caesar-chrome.webm" 
-								className="absolute top-0 left-0 w-full h-full object-cover"
+								className="absolute top-0 left-0 w-full h-full object-cover scale-125"
 								controls={false}
 								autoPlay={true}
 								muted={true}
