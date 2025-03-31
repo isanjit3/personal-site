@@ -60,8 +60,8 @@ export default {
 			xs: '0.75rem',
 			sm: '0.875rem',
 			base: '1rem',
-			md: '2rem',
-			lg: '2.5rem',
+			md: '1.5rem',
+			lg: '2rem',
 			xl: '4rem'
 		}
   	}

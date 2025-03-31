@@ -1,8 +1,7 @@
 import { Typewriter } from "@/components/ui/typewriter";
 import { BoxReveal } from "@/components/ui/box-reveal";
-import Image from "next/image";
-import { ModeToggle } from "@/components/ui/theme-toggle";
-import VideoBackground from "@/components/ui/video-background";
+import R2VideoPlayer from "@/components/ui/video-player";
+
 export default function Home() {
 	return (
 		<>
@@ -38,7 +37,7 @@ export default function Home() {
 						{/* Socials */}
 						<div className="flex flex-col mt-16 gap-y-10">
 							<BoxReveal
-								href="https://eblws9kpxcehafgs.public.blob.vercel-storage.com/files/Thangarasu_Sanjit_Resume.pdf"
+								href="https://pub-71230dd3ddd04665b2275f23aae355c5.r2.dev/Thangarasu_Sanjit_Resume.pdf"
 								target="_blank"
 								className="text-md"
 								download="Thangarasu_Sanjit_Resume.pdf"
@@ -65,7 +64,7 @@ export default function Home() {
 					{/* Right content */}
 					<div className="flex-1 relative flex flex-col">
 						<div className="relative w-full h-full -ml-20">
-							<VideoBackground />
+							<R2VideoPlayer videoKey="caesar-chrome.webm" videoKeySafari="caesar-safari.mp4" />
 						</div>
 					</div>
 				</div>
