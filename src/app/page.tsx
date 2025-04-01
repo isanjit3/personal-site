@@ -64,12 +64,12 @@ export default function Home() {
 
 					{/* Right content */}
 					<div className="flex-1 relative flex flex-col">
-						<div className="relative w-full h-full -ml-20">
+						<div className="relative w-full h-full -ml-20 overflow-y-hidden overflow-x-hidden pointer-events-none">
 							<Suspense>
 								<VideoPlayer 
 								videoName="caesar-safari.mp4" 
 								chromeVideoName="caesar-chrome.webm" 
-								className="absolute top-0 left-0 w-full h-full object-cover scale-125"
+								className="absolute top-0 left-0 w-full h-full scale-125"
 								controls={false}
 								autoPlay={true}
 								muted={true}
